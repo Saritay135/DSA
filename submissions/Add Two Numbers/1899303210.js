@@ -1,0 +1,50 @@
+# Title: Add Two Numbers
+# Submission ID: 1899303210
+# Status: Wrong Answer
+# Date: January 27, 2026 at 09:47:09 PM CST
+
+/**
+ * Definition for singly-linked list.
+ * function ListNode(val, next) {
+ *     this.val = (val===undefined ? 0 : val)
+ *     this.next = (next===undefined ? null : next)
+ * }
+ */
+/**
+ * @param {ListNode} l1
+ * @param {ListNode} l2
+ * @return {ListNode}
+ */
+var addTwoNumbers = function(l1, l2) {
+    
+    let newList = new ListNode(0);
+    let current = newList;
+    if(!l1) return l2;
+    if(!l2) return l1;
+    let carry = 0;
+    while(l1 || l2 || carry){
+        let sum = 0;
+        let digit = 0;
+        if(!l1 && l2){
+       sum = 0 + l2.val + carry;
+        }
+       if(!l2 && l1){
+        sum = l1.val + 0 + carry;;
+       }
+       if(!l1 && !l2){
+        sum = carry;
+       }
+       if(l1 && l2) {
+        sum = l1.val + l2.val + carry;
+       }
+     carry = Math.floor(sum/10);
+     digit = sum%10;
+    
+    if(l1) l1 = l1.next;
+    if(l2) l2 = l2.next;
+    current = new ListNode(digit);
+    current = current.next;
+    }
+    
+    return newList;
+};
