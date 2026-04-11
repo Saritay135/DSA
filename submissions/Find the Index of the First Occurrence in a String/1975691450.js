@@ -1,0 +1,24 @@
+# Title: Find the Index of the First Occurrence in a String
+# Submission ID: 1975691450
+# Status: Accepted
+# Date: April 11, 2026 at 01:20:52 PM CDT
+
+/**
+ * @param {string} haystack
+ * @param {string} needle
+ * @return {number}
+ */
+var strStr = function(haystack, needle) {
+   let m = haystack.length;
+   let n = needle.length;
+   for(let i=0; i<m; i++){
+    let j=0;
+    for(j=0; j<n; j++){
+       if(haystack[i+j]!= needle[j]){
+        break;
+       }
+    }
+    if(j===n) return (i);
+   } 
+   return -1;
+};
