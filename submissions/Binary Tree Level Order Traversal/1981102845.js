@@ -1,0 +1,29 @@
+# Title: Binary Tree Level Order Traversal
+# Submission ID: 1981102845
+# Status: Accepted
+# Date: April 17, 2026 at 11:42:28 AM CDT
+
+/**
+ * Definition for a binary tree node.
+ * function TreeNode(val, left, right) {
+ *     this.val = (val===undefined ? 0 : val)
+ *     this.left = (left===undefined ? null : left)
+ *     this.right = (right===undefined ? null : right)
+ * }
+ */
+/**
+ * @param {TreeNode} root
+ * @return {number[][]}
+ */
+var levelOrder = function(root) {
+    if(!root) return [];
+     let ans = [];
+    let traversal = (curr, level) => {
+        if(!ans[level]) ans[level] = [];
+        ans[level].push(curr.val);
+        curr.left && traversal(curr.left, level+1);
+        curr.right && traversal(curr.right, level+1);
+    }
+    traversal(root, 0);
+    return ans;
+};
